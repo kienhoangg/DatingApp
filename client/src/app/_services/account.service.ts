@@ -17,15 +17,14 @@ export class AccountService {
 
   register(model: any) {
     console.log('model', model);
-    return this.http
-      .post<User>(this.baseUrl + 'accounts/register', model)
-      .subscribe((user: User) => {
-        console.log('456');
+    return this.http.post<User>(this.baseUrl + 'accounts/register', model).pipe(
+      map((user: User) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
-      });
+      })
+    );
   }
 
   login(model: any) {
