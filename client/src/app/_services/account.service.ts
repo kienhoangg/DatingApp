@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { environment } from './../../environments/environment';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
@@ -9,11 +10,13 @@ import { User } from '../_models/user';
   providedIn: 'root',
 })
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, handler: HttpBackend) {
+    this.http = new HttpClient(handler);
+  }
 
   register(model: any) {
     console.log('model', model);
@@ -30,10 +33,10 @@ export class AccountService {
   login(model: any) {
     return this.http.post<User>(this.baseUrl + 'accounts/login', model).pipe(
       map((response: User) => {
-        console.log('789');
+        debugger;
         const user = response;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user.token));
+          localStorage.setItem('user', JSON.stringify(user));
           //thêm dữ liệu cho observable
           this.currentUserSource.next(user);
         }
