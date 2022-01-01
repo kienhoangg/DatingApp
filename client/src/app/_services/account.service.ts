@@ -33,7 +33,6 @@ export class AccountService {
   login(model: any) {
     return this.http.post<User>(this.baseUrl + 'accounts/login', model).pipe(
       map((response: User) => {
-        debugger;
         const user = response;
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
