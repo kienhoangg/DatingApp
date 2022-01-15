@@ -37,7 +37,7 @@
         >Welcome {{ user.username | titlecase
         }}<img
           class="ml-2"
-          src="{{ user.photoUrl }}"
+          src="{{ user.photoUrl || './assets/user.png' }}"
           alt="{{ user.username }}"
         />
       </a>
