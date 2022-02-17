@@ -60,7 +60,6 @@ export class UserManagementComponent implements OnInit {
       { name: 'Moderator', value: 'Moderator', checked: false },
       { name: 'Member', value: 'Member', checked: false },
     ];
-    debugger;
     availableRoles.forEach((role) => {
       let isMatch = false;
       for (const userRole of userRoles) {

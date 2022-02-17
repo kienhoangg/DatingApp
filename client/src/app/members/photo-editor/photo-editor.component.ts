@@ -58,6 +58,7 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   initializeUploader(): void {
+    // debugger;
     this.uploader = new FileUploader({
       url: this.baseUrl + 'users/add-photo',
       authToken: 'Bearer ' + this.user.token,
@@ -72,6 +73,7 @@ export class PhotoEditorComponent implements OnInit {
     };
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
+      debugger;
       if (response) {
         const photo: Photo = JSON.parse(response);
         this.member.photos.push(photo);

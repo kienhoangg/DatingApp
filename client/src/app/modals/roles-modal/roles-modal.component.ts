@@ -17,7 +17,6 @@ export class RolesModalComponent implements OnInit {
 
   ngOnInit(): void {}
   updateRoles() {
-    debugger;
     this.updateSelectedRoles.emit(this.roles);
     this.bsModalRef.hide();
   }
