@@ -52,7 +52,7 @@ namespace API.Extensions
                     var pgPass = pgUserPass.Split(":")[1];
                     var pgHost = pgHostPort.Split(":")[0];
                     var pgPort = pgHostPort.Split(":")[1];
-                    connStr = $"Server={pgHost}; Port={pgPort}; User Id={pgUser}; Password={pgPass}; Database={pgDb};SslMode=Disable";
+                    connStr = $"Server={pgHost}; Port={pgPort}; User Id={pgUser}; Password={pgPass}; Database={pgDb};SslMode=Require";
                 }
 
                 // Whether the connection string came from the local development configuration file
