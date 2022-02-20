@@ -50,7 +50,6 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Token = await _tokenService.CreateToken(user),
-                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain == true).Url,
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
